@@ -1,8 +1,6 @@
 /*
   ==============================================================================
-
     This file contains the basic framework code for a JUCE plugin editor.
-
   ==============================================================================
 */
 
@@ -11,17 +9,13 @@
 #include <JuceHeader.h>
 #include "PluginProcessor.h"
 
-struct RotarySliderWithLabels : juce::Slider
+struct CustomRotarySlider : juce::Slider
 {
-    RotarySliderWithLabels(juce::RangedAudioParameter& rap, const juce::String& unitSuffix) :
-                           juce::Slider(juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag,
+    CustomRotarySlider() : juce::Slider(juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag,
                                         juce::Slider::TextEntryBoxPosition::NoTextBox)
     {
         
     }
-private:
-    juce::RangedAudioParameter* param;
-    juce::String suffix;
 };
 
 struct ResponseCurveComponent : juce::Component,
@@ -44,22 +38,6 @@ private:
     juce::Atomic<bool> parametersChanged {false};
     
     MonoChain monochain;
-    /*
-     SimpleEQAudioProcessor& audioProcessor;
-     juce::Atomic<bool> paramtersChanged {false};
-     
-     MonoChain monochain;
-     
-     
-     
-     
-     void paint(juce::Graphics& g) override;
-     
-     
-     void timerCallBack();
-     
-     */
-
 };
 
 //==============================================================================
@@ -80,7 +58,7 @@ private:
     // access the processor object that created it.
     SimpleEQAudioProcessor& audioProcessor;
         
-    RotarySliderWithLabels peakFreqSlider,
+    CustomRotarySlider peakFreqSlider,
     peakGainSlider,
     peakQualitySlider,
     lowCutFreqSlider,

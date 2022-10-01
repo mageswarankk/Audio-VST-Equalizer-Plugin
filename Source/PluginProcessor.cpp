@@ -1,8 +1,6 @@
 /*
   ==============================================================================
-
     This file contains the basic framework code for a JUCE plugin processor.
-
   ==============================================================================
 */
 
@@ -310,7 +308,7 @@ juce::AudioProcessorValueTreeState::ParameterLayout
         // parametric peak quality parameter
         layout.add(std::make_unique<juce::AudioParameterFloat> (juce::ParameterID { "Peak Quality", 1 },
                                                                "Peak Quality",
-                                                               juce::NormalisableRange<float>(0.1f, 10.f, 0.05f, 1.f),
+                                                               juce::NormalisableRange<float>(0.1f, 10.f, 0.05f, 0.5f),
                                                                1.0f)); // default value 1
         
         juce::StringArray stringArray;
